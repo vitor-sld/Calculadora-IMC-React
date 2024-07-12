@@ -1,0 +1,49 @@
+.corpoSite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(244, 244, 244, 0.497);
+    height: 75vh;
+}
+
+.container {
+    width: 400px;
+    height: 300px;
+    padding: 20px 60px;
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+}
+form {
+    width: 80%;
+    margin: auto;
+}
+
+.formInputs{
+    margin: auto;
+    background-color: white;
+    width: 90%;
+    padding: 0 0px 0 20px ;
+}
+
+
+.formInputs label {
+    display: block;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.formInputs input {
+    display: block;
+    width: 90%;
+    margin-bottom: 10px;
+    padding: 5px 5px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgb(124, 124, 124);
+    max-width: 100%;
+    overflow: hidden;
+}
+.formInputs input:focus {
+    border-bottom: 2px solid black;
+
+}
