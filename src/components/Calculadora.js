@@ -1,41 +1,45 @@
-function Calculadora({ valorAltura, valorPeso }) {
-    console.log(valorAltura + '  ' + valorPeso);
-    const alturaAoQuadrado = valorAltura ** 2
-    const imc = valorPeso / alturaAoQuadrado
-    const classificacaoIMC = document.getElementById('classificacaoIMC')
+import { useEffect, useState } from "react"
 
+function Calculadora({ imcPeso, valorAltura }) {
+
+    const [classificacao, setClassificacao] = useState('')
     
-    if (imc <= 0 || valorAltura <= 0) {
-        classificacaoIMC.innerHTML = 'Dados incorretos'
-    }
-    else if (imc < 18.5 && imc > 0) {
-        classificacaoIMC.innerHTML = 'Seu IMC aponta peso abaixo do normal'
-    }
-    else if (imc >= 18.5 && imc < 25) {
-        classificacaoIMC.innerHTML = 'Seu IMC aponta peso normal'
-    }
-    else if (imc >= 25 && imc < 30) {
-        classificacaoIMC.innerHTML = 'Seu IMC aponta excesso de peso'
-    }
-    else if (imc >= 30 && imc < 35) {
-        classificacaoIMC.innerHTML = 'Seu IMC aponta obesidade classe I'
-    }
-    else if (imc >= 35 && imc < 40) {
-        classificacaoIMC.innerHTML = 'Seu IMC aponta obesidade classe II'
-    }
-    else {
-        classificacaoIMC.innerHTML = 'Seu IMC aponta obesidade classe III'
-    }
+    useEffect(() => {
+        if(valorAltura >= 0) {
+            if (imcPeso < 18.5 && imcPeso > 0) {
+                setClassificacao('Seu IMC aponta peso abaixo do normal')
+            }
+            else if (imcPeso >= 18.5 && imcPeso < 25) {
+                setClassificacao('Seu IMC aponta peso normal')
+            }
+            else if (imcPeso >= 25 && imcPeso < 30) {
+                setClassificacao('Seu IMC aponta excesso de peso')
+            }
+            else if (imcPeso >= 30 && imcPeso < 35) {
+                setClassificacao('Seu IMC aponta obesidade classe I')
+            }
+            else if (imcPeso >= 35 && imcPeso < 40) {
+                setClassificacao('Seu IMC aponta obesidade classe II')
+            }
+            else if (imcPeso >= 40) {
+                setClassificacao('Seu IMC aponta obesidade classe III')
+            } else {
+            setClassificacao('Digite seu IMC');
+        }
+        }else{
+            setClassificacao('Digite seu IMC corretamente');
+        }
+
+    }, [imcPeso,valorAltura])
+
 
     return (
         <div>
-            {valorAltura > 0 && valorPeso > 0 && (
-                <p>{imc.toFixed(2)}</p>
+            <p>{imcPeso > 0 && valorAltura > 0 && `Seu IMC é de: ${imcPeso.toFixed(2)}`}</p>
 
-            )}
-            <span id="classificacaoIMC"></span>
+            <span>{classificacao}</span>
 
         </div >
-    )
+    ) 
 }
 export default Calculadora
